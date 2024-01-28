@@ -7,7 +7,34 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>git practice</h1>
-    <h2>sarath branch</h2>
+    <h1>todolist</h1>
+    <input type="text" placeholder="enter item" id="additem" />
+    <button onclick="buttonclick()">add item</button>
+    <div id="items">
+      <ul id="todoitems"></ul>
+    </div>
+    <script>
+      function buttonclick() {
+        let parent = document.getElementById("todoitems");
+        let addbutton = document.getElementById("additem");
+
+        let newitem = addbutton.value;
+
+        let newlistitem = document.createElement("li");
+        console.log(newlistitem);
+        newlistitem.textContent = newitem;
+        console.log(newlistitem);
+        parent.appendChild(newlistitem);
+        addbutton.value = "";
+        let listitems = Array.from(document.getElementsByTagName("li"));
+        listitems.forEach((element) => {
+          console.log(element);
+          element.addEventListener("click", () => {
+            console.log("item clciked");
+            element.remove();
+          });
+        });
+      }
+    </script>
   </body>
 </html>
